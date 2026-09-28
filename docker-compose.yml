@@ -1,0 +1,65 @@
+version: "3.8"
+
+# Stack: Đại Việt Solar website (WordPress + MariaDB)
+# Deploy qua Portainer: Stacks > Add stack > Repository, trỏ vào repo GitHub này,
+# đường dẫn Compose path: docker-compose.yml
+#
+# Sau khi deploy, đưa domain trỏ qua Nginx Proxy Manager tới container "daiviet-solar-wp"
+# ở port 80 nội bộ (không cần publish port 80/443 ra ngoài nếu đã có NPM đứng trước).
+# Trong lúc review có thể publish trực tiếp qua biến WP_PUBLISH_PORT bên dưới.
+
+services:
+  db:
+    image: mariadb:10.11
+    container_name: daiviet-solar-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-daiviet_solar}
+      MYSQL_USER: ${MYSQL_USER:-daiviet_solar}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-changeme_strong_password}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-changeme_root_password}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - daiviet_internal
+
+  wordpress:
+    image: wordpress:6.6-php8.2-apache
+    container_name: daiviet-solar-wp
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE:-daiviet_solar}
+      WORDPRESS_DB_USER: ${MYSQL_USER:-daiviet_solar}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:-changeme_strong_password}
+      WORDPRESS_TABLE_PREFIX: dvs_
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME', getenv('WP_HOME') ?: 'http://localhost');
+        define('WP_SITEURL', getenv('WP_HOME') ?: 'http://localhost');
+        define('FORCE_SSL_ADMIN', false);
+    volumes:
+      - wp_data:/var/www/html
+      - ./wp-content/themes/daiviet-solar:/var/www/html/wp-content/themes/daiviet-solar
+    ports:
+      # Chỉ dùng để review trực tiếp bằng IP:port. Nếu đã có Nginx Proxy Manager
+      # trỏ domain vào container này qua network chung, có thể bỏ khối "ports" này.
+      - "${WP_PUBLISH_PORT:-8090}:80"
+    networks:
+      - daiviet_internal
+      - proxy
+
+networks:
+  daiviet_internal:
+    driver: bridge
+  proxy:
+    # Network chung với Nginx Proxy Manager (nếu đã có sẵn), để NPM forward domain
+    # vào thẳng container "daiviet-solar-wp" port 80 mà không cần publish port ra ngoài.
+    # Nếu chưa có network này, đổi "external: true" thành "false" hoặc tạo trước bằng:
+    #   docker network create proxy
+    external: true
+
+volumes:
+  db_data:
+  wp_data:
