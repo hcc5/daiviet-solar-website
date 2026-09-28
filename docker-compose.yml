@@ -1,5 +1,3 @@
-version: "3.8"
-
 # Stack: Đại Việt Solar website (WordPress + MariaDB)
 # Deploy qua Portainer: Stacks > Add stack > Repository, trỏ vào repo GitHub này,
 # đường dẫn Compose path: docker-compose.yml
@@ -48,17 +46,15 @@ services:
       - "${WP_PUBLISH_PORT:-8090}:80"
     networks:
       - daiviet_internal
-      - proxy
+
+# Ghi chú: khi cần gắn domain thật qua Nginx Proxy Manager, thêm lại một network
+# "proxy" (external: true, trỏ đúng tên network mà NPM đang dùng) vào cả 2 danh sách
+# networks ở trên và ở dưới, để NPM forward domain thẳng vào container "daiviet-solar-wp"
+# port 80 nội bộ mà không cần publish port ra ngoài.
 
 networks:
   daiviet_internal:
     driver: bridge
-  proxy:
-    # Network chung với Nginx Proxy Manager (nếu đã có sẵn), để NPM forward domain
-    # vào thẳng container "daiviet-solar-wp" port 80 mà không cần publish port ra ngoài.
-    # Nếu chưa có network này, đổi "external: true" thành "false" hoặc tạo trước bằng:
-    #   docker network create proxy
-    external: true
 
 volumes:
   db_data:
