@@ -33,6 +33,10 @@ services:
       WORDPRESS_DB_USER: ${MYSQL_USER:-daiviet_solar}
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:-changeme_strong_password}
       WORDPRESS_TABLE_PREFIX: dvs_
+      # WP_HOME phải được khai báo tường minh ở đây thì getenv('WP_HOME') bên dưới
+      # mới đọc được — nếu chỉ dùng ${WP_HOME} trong WORDPRESS_CONFIG_EXTRA thì compose
+      # sẽ nội suy lúc build stack chứ không tạo biến môi trường thật trong container.
+      WP_HOME: ${WP_HOME:-http://localhost}
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_HOME', getenv('WP_HOME') ?: 'http://localhost');
         define('WP_SITEURL', getenv('WP_HOME') ?: 'http://localhost');
