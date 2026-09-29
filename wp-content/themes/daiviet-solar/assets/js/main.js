@@ -12,9 +12,14 @@
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // Close mobile nav when a link inside it is clicked.
+    // Close mobile nav when a real (leaf) link inside it is clicked.
+    // Parent links that toggle a dropdown submenu should not close the menu.
     mobileNav.addEventListener('click', function (e) {
       if (e.target.tagName === 'A') {
+        var parentLi = e.target.closest('.menu-item-has-children');
+        if (parentLi && parentLi.querySelector(':scope > a') === e.target) {
+          return; // handled by the dropdown toggle listener instead
+        }
         mobileNav.classList.remove('is-open');
         toggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
