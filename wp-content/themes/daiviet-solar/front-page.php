@@ -3,6 +3,27 @@ if (!defined('ABSPATH')) exit;
 get_header();
 ?>
 
+<section class="dvs-slider" aria-label="Hình ảnh dự án Đại Việt Solar">
+  <div class="dvs-slider__track" id="dvs-slider-track">
+    <div class="dvs-slider__slide is-active" style="background-image:url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/hero/slide-1.jpg')"></div>
+    <div class="dvs-slider__slide" style="background-image:url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/hero/slide-2.jpg')"></div>
+    <div class="dvs-slider__slide" style="background-image:url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/hero/slide-3.jpg')"></div>
+  </div>
+  <div class="dvs-slider__overlay" aria-hidden="true"></div>
+  <div class="dvs-container dvs-slider__caption">
+    <span class="dvs-eyebrow">Dự án thực tế</span>
+    <h2>Hàng trăm công trình điện mặt trời đã lắp đặt và vận hành ổn định</h2>
+  </div>
+  <button type="button" class="dvs-slider__nav dvs-slider__nav--prev" aria-label="Ảnh trước">‹</button>
+  <button type="button" class="dvs-slider__nav dvs-slider__nav--next" aria-label="Ảnh sau">›</button>
+  <div class="dvs-slider__dots">
+    <button type="button" class="is-active" data-slide="0" aria-label="Xem ảnh 1"></button>
+    <button type="button" data-slide="1" aria-label="Xem ảnh 2"></button>
+    <button type="button" data-slide="2" aria-label="Xem ảnh 3"></button>
+  </div>
+</section>
+
+
 <section class="dvs-hero">
   <div class="dvs-container dvs-hero__grid">
     <div class="dvs-hero__content">
@@ -140,6 +161,33 @@ get_header();
   </div>
 </section>
 
+
+<section class="dvs-section dvs-projects">
+  <div class="dvs-container">
+    <span class="dvs-eyebrow">Công trình thực tế</span>
+    <h2 class="dvs-section__title">Hình ảnh các công trình đã triển khai</h2>
+    <p class="dvs-section__subtitle">Một số hệ thống điện mặt trời áp mái do Đại Việt Solar khảo sát, thi công và đưa vào vận hành thực tế.</p>
+    <div class="dvs-project-gallery">
+      <figure class="dvs-project-card">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/projects/project-1.jpg" alt="Công trình điện mặt trời áp mái đã lắp đặt - Đại Việt Solar" loading="lazy">
+        <figcaption>Hệ hoà lưới bám tải cỡ lớn — nhà ở dân dụng</figcaption>
+      </figure>
+      <figure class="dvs-project-card">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/projects/project-2.jpg" alt="Công trình điện mặt trời áp mái đã lắp đặt - Đại Việt Solar" loading="lazy">
+        <figcaption>Hệ thống điện mặt trời áp mái nhà phố</figcaption>
+      </figure>
+      <figure class="dvs-project-card">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/projects/project-3.jpg" alt="Công trình điện mặt trời áp mái đã lắp đặt - Đại Việt Solar" loading="lazy">
+        <figcaption>Hệ thống điện mặt trời áp mái nhà dân</figcaption>
+      </figure>
+      <figure class="dvs-project-card">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/projects/project-4.jpg" alt="Công trình điện mặt trời áp mái đã lắp đặt - Đại Việt Solar" loading="lazy">
+        <figcaption>Hệ hoà lưới bám tải quy mô lớn</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section class="dvs-section dvs-warranty dvs-section--alt">
   <div class="dvs-container dvs-split">
     <div class="dvs-split__visual" aria-hidden="true">
@@ -154,6 +202,22 @@ get_header();
       <h2>Đồng hành lâu dài sau khi lắp đặt</h2>
       <p>Đại Việt Solar cung cấp chính sách bảo hành minh bạch cho từng thiết bị và lịch bảo dưỡng định kỳ để hệ thống luôn vận hành ở hiệu suất tối ưu trong suốt vòng đời sử dụng.</p>
       <a class="dvs-link-arrow" href="<?php echo esc_url(home_url('/bao-hanh-bao-duong/')); ?>">Xem chính sách bảo hành →</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="dvs-section dvs-partners dvs-section--alt">
+  <div class="dvs-container">
+    <span class="dvs-eyebrow">Đối tác chiến lược</span>
+    <h2 class="dvs-section__title">Đồng hành cùng các thương hiệu thiết bị hàng đầu</h2>
+    <p class="dvs-section__subtitle">Đại Việt Solar hợp tác cùng các nhà sản xuất, phân phối thiết bị điện và năng lượng mặt trời uy tín trong nước và quốc tế.</p>
+    <div class="dvs-partners__grid">
+      <?php for ($i = 1; $i <= 23; $i++) : $n = str_pad($i, 2, '0', STR_PAD_LEFT); ?>
+      <div class="dvs-partner-logo">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/partners/partner-<?php echo esc_attr($n); ?>.jpg" alt="Đối tác thiết bị Đại Việt Solar" loading="lazy">
+      </div>
+      <?php endfor; ?>
     </div>
   </div>
 </section>
