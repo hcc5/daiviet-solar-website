@@ -10,10 +10,6 @@ get_header();
     <div class="dvs-slider__slide" style="background-image:url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/hero/slide-3.jpg')"></div>
   </div>
   <div class="dvs-slider__overlay" aria-hidden="true"></div>
-  <div class="dvs-container dvs-slider__caption">
-    <span class="dvs-eyebrow">Dự án thực tế</span>
-    <h2>Hàng trăm công trình điện mặt trời đã lắp đặt và vận hành ổn định</h2>
-  </div>
   <button type="button" class="dvs-slider__nav dvs-slider__nav--prev" aria-label="Ảnh trước">‹</button>
   <button type="button" class="dvs-slider__nav dvs-slider__nav--next" aria-label="Ảnh sau">›</button>
   <div class="dvs-slider__dots">

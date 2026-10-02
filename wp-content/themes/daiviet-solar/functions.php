@@ -5,7 +5,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-define('DVS_VERSION', '1.2.0');
+define('DVS_VERSION', '1.3.0');
 define('DVS_DIR', get_template_directory());
 define('DVS_URI', get_template_directory_uri());
 
@@ -105,8 +105,8 @@ function dvs_customize_register($wp_customize) {
         'dvs_hotline'    => ['label' => 'Hotline', 'default' => '0978 021 216'],
         'dvs_email'      => ['label' => 'Email', 'default' => 'lienhe@daivietsolar.vn'],
         'dvs_address'    => ['label' => 'Địa chỉ', 'default' => 'Ninh Bình, Việt Nam'],
-        'dvs_zalo'       => ['label' => 'Link Zalo', 'default' => 'https://zalo.me/'],
-        'dvs_facebook'   => ['label' => 'Link Facebook', 'default' => ''],
+        'dvs_zalo'       => ['label' => 'Link Zalo', 'default' => 'https://zalo.me/0978021216'],
+        'dvs_facebook'   => ['label' => 'Link Facebook', 'default' => 'https://www.facebook.com/ctydaiviet.tbdn'],
     ];
     foreach ($fields as $id => $f) {
         $wp_customize->add_setting($id, ['default' => $f['default'], 'sanitize_callback' => 'sanitize_text_field']);

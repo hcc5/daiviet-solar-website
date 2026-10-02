@@ -10,10 +10,10 @@
       </a>
       <p class="dvs-footer__desc">Đại Việt Solar tư vấn, thiết kế, thi công và vận hành hệ thống điện năng lượng mặt trời cho nhà dân và doanh nghiệp trên toàn quốc.</p>
       <div class="dvs-footer__social">
-        <?php if ($zalo = get_theme_mod('dvs_zalo')) : ?>
+        <?php if ($zalo = get_theme_mod('dvs_zalo', 'https://zalo.me/0978021216')) : ?>
           <a href="<?php echo esc_url($zalo); ?>" target="_blank" rel="noopener">Zalo</a>
         <?php endif; ?>
-        <?php if ($fb = get_theme_mod('dvs_facebook')) : ?>
+        <?php if ($fb = get_theme_mod('dvs_facebook', 'https://www.facebook.com/ctydaiviet.tbdn')) : ?>
           <a href="<?php echo esc_url($fb); ?>" target="_blank" rel="noopener">Facebook</a>
         <?php endif; ?>
       </div>
@@ -56,9 +56,26 @@
   </div>
 </footer>
 
-<a class="dvs-float-cta" href="tel:<?php echo esc_attr(preg_replace('/\s+/', '', get_theme_mod('dvs_hotline', '0978021216'))); ?>" aria-label="Gọi tư vấn ngay">
-  <span aria-hidden="true">📞</span>
-</a>
+<div class="dvs-float-rail" aria-label="Kênh liên hệ nhanh">
+  <?php $dvs_fb_url = get_theme_mod('dvs_facebook', 'https://www.facebook.com/ctydaiviet.tbdn'); ?>
+  <?php if ($dvs_fb_url) : ?>
+  <a class="dvs-float-rail__item dvs-float-rail__item--fb" href="<?php echo esc_url($dvs_fb_url); ?>" target="_blank" rel="noopener" aria-label="Fanpage Facebook Đại Việt Solar">
+    <span aria-hidden="true">f</span>
+  </a>
+  <?php endif; ?>
+  <?php $dvs_zalo_url = get_theme_mod('dvs_zalo', 'https://zalo.me/0978021216'); ?>
+  <?php if ($dvs_zalo_url) : ?>
+  <a class="dvs-float-rail__item dvs-float-rail__item--zalo" href="<?php echo esc_url($dvs_zalo_url); ?>" target="_blank" rel="noopener" aria-label="Chat Zalo với Đại Việt Solar">
+    <span aria-hidden="true">Zalo</span>
+  </a>
+  <?php endif; ?>
+  <a class="dvs-float-rail__item dvs-float-rail__item--phone" href="tel:<?php echo esc_attr(preg_replace('/\s+/', '', get_theme_mod('dvs_hotline', '0978021216'))); ?>" aria-label="Gọi tư vấn ngay">
+    <span aria-hidden="true">📞</span>
+  </a>
+  <a class="dvs-float-rail__item dvs-float-rail__item--mail" href="mailto:<?php echo esc_attr(get_theme_mod('dvs_email', 'lienhe@daivietsolar.vn')); ?>" aria-label="Gửi email cho Đại Việt Solar">
+    <span aria-hidden="true">✉️</span>
+  </a>
+</div>
 
 <?php wp_footer(); ?>
 </body>

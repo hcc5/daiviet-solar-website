@@ -20,7 +20,19 @@
         <span class="dvs-icon">✉️</span> <?php echo esc_html(get_theme_mod('dvs_email', 'lienhe@daivietsolar.vn')); ?>
       </a>
     </div>
-    <div class="dvs-topbar__tag">Năng lượng sạch — Đầu tư một lần, tiết kiệm nhiều năm</div>
+    <div class="dvs-topbar__right">
+      <span class="dvs-topbar__tag">Năng lượng sạch — Đầu tư một lần, tiết kiệm nhiều năm</span>
+      <div class="dvs-topbar__social">
+        <?php $dvs_fb_top = get_theme_mod('dvs_facebook', 'https://www.facebook.com/ctydaiviet.tbdn'); ?>
+        <?php if ($dvs_fb_top) : ?>
+          <a href="<?php echo esc_url($dvs_fb_top); ?>" target="_blank" rel="noopener" aria-label="Facebook Đại Việt Solar">f</a>
+        <?php endif; ?>
+        <?php $dvs_zalo_top = get_theme_mod('dvs_zalo', 'https://zalo.me/0978021216'); ?>
+        <?php if ($dvs_zalo_top) : ?>
+          <a href="<?php echo esc_url($dvs_zalo_top); ?>" target="_blank" rel="noopener" aria-label="Zalo Đại Việt Solar">Z</a>
+        <?php endif; ?>
+      </div>
+    </div>
   </div>
 </div>
 
