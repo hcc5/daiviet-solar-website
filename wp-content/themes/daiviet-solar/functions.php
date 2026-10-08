@@ -5,7 +5,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-define('DVS_VERSION', '1.3.0');
+define('DVS_VERSION', '1.4.0');
 define('DVS_DIR', get_template_directory());
 define('DVS_URI', get_template_directory_uri());
 
@@ -35,6 +35,9 @@ function dvs_assets() {
     wp_enqueue_style('dvs-fonts', 'https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap', [], null);
     wp_enqueue_style('dvs-style', DVS_URI . '/assets/css/style.css', [], DVS_VERSION);
     wp_enqueue_script('dvs-main', DVS_URI . '/assets/js/main.js', [], DVS_VERSION, true);
+    if (is_page_template('page-cong-cu-tinh-dien.php')) {
+        wp_enqueue_script('dvs-dien-calc', DVS_URI . '/assets/js/dien-calc.js', [], DVS_VERSION, true);
+    }
 }
 add_action('wp_enqueue_scripts', 'dvs_assets');
 

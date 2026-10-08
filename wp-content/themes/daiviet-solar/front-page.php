@@ -7,7 +7,6 @@ get_header();
   <div class="dvs-slider__track" id="dvs-slider-track">
     <div class="dvs-slider__slide is-active" style="background-image:url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/hero/slide-1.jpg')"></div>
     <div class="dvs-slider__slide" style="background-image:url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/hero/slide-2.jpg')"></div>
-    <div class="dvs-slider__slide" style="background-image:url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/hero/slide-3.jpg')"></div>
   </div>
   <div class="dvs-slider__overlay" aria-hidden="true"></div>
   <button type="button" class="dvs-slider__nav dvs-slider__nav--prev" aria-label="Ảnh trước">‹</button>
@@ -15,7 +14,6 @@ get_header();
   <div class="dvs-slider__dots">
     <button type="button" class="is-active" data-slide="0" aria-label="Xem ảnh 1"></button>
     <button type="button" data-slide="1" aria-label="Xem ảnh 2"></button>
-    <button type="button" data-slide="2" aria-label="Xem ảnh 3"></button>
   </div>
 </section>
 
@@ -44,6 +42,17 @@ get_header();
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="dvs-calc-promo">
+  <div class="dvs-container dvs-calc-promo__inner">
+    <div class="dvs-calc-promo__text">
+      <span class="dvs-eyebrow">Miễn phí &middot; Có ngay kết quả</span>
+      <h2>Tính nhanh tiền điện &amp; công suất điện mặt trời phù hợp</h2>
+      <p>Nhập hóa đơn tiền điện, nhận ngay công suất đề xuất, số tấm pin, diện tích mái, inverter và dung lượng pin lưu trữ — áp dụng biểu giá EVN mới nhất.</p>
+    </div>
+    <a class="dvs-btn dvs-btn--primary dvs-btn--lg" href="<?php echo esc_url(home_url('/cong-cu-tinh-dien/')); ?>">Dùng công cụ tính toán →</a>
   </div>
 </section>
 
@@ -209,7 +218,7 @@ get_header();
     <h2 class="dvs-section__title">Đồng hành cùng các thương hiệu thiết bị hàng đầu</h2>
     <p class="dvs-section__subtitle">Đại Việt Solar hợp tác cùng các nhà sản xuất, phân phối thiết bị điện và năng lượng mặt trời uy tín trong nước và quốc tế.</p>
     <div class="dvs-partners__grid">
-      <?php for ($i = 1; $i <= 23; $i++) : $n = str_pad($i, 2, '0', STR_PAD_LEFT); ?>
+      <?php for ($i = 1; $i <= 10; $i++) : $n = str_pad($i, 2, '0', STR_PAD_LEFT); ?>
       <div class="dvs-partner-logo">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/partners/partner-<?php echo esc_attr($n); ?>.jpg" alt="Đối tác thiết bị Đại Việt Solar" loading="lazy">
       </div>
